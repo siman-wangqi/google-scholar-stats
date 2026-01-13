@@ -8,7 +8,7 @@ YOUR_USER_ID = "wv7uLCMAAAAJ"
 def get_citations():
     try:
         # 爬取你的谷歌学术数据
-        author = scholarly.search_author_id(wv7uLCMAAAAJ)
+        author = scholarly.search_author_id(YOUR_USER_ID)
         author = scholarly.fill(author)
         total_citations = str(author['citedby'])  # 提取总引用量
         return total_citations
