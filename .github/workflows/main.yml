@@ -1,0 +1,31 @@
+name: 自动爬取谷歌学术引用量
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 每天北京时间9点自动运行（UTC时间1点）
+  workflow_dispatch:     # 支持手动触发
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: 设置Python环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: 安装依赖
+        run: |
+          pip install scholarly
+          
+      - name: 运行爬虫脚本
+        run: python crawl_gs.py
+          
+      - name: 提交JSON文件到仓库
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add gs_data_shieldsio.json
+          git commit -m "更新引用量" || echo "引用量未变化，无需提交"
+          git push
