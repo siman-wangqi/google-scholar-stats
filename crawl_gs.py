@@ -3,12 +3,12 @@ from scholarly import scholarly
 import json
 import os
 
-YOUR_USER_ID = "wv7uLCMAAAAJ&hl" 
+YOUR_USER_ID = "wv7uLCMAAAAJ" 
 
 def get_citations():
     try:
         # 爬取你的谷歌学术数据
-        author = scholarly.search_author_id(YOUR_USER_ID)
+        author = scholarly.search_author_id(wv7uLCMAAAAJ)
         author = scholarly.fill(author)
         total_citations = str(author['citedby'])  # 提取总引用量
         return total_citations
