@@ -2,8 +2,10 @@
 from scholarly import scholarly
 import json
 import os
-
-YOUR_USER_ID = "wv7uLCMAAAAJ" 
+import time
+import random
+# 爬取前增加随机延迟（2-5秒）
+time.sleep(random.uniform(2, 5))
 
 def get_citations():
     try:
