@@ -1,7 +1,7 @@
 name: 自动爬取谷歌学术引用量
 on:
   schedule:
-    - cron: '0 18 * * *'  # 每天北京时间9点自动运行（UTC时间1点）
+    - cron: '0 18 * * *'  # 每天自动运行
   workflow_dispatch:     # 支持手动触发
 
 jobs:
